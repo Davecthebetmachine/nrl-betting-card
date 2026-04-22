@@ -1,92 +1,183 @@
 <!DOCTYPE html>
+<!--
+=============================================================
+NRL 2026 BETTING CARD TEMPLATE v2.0 — MOBILE RESPONSIVE
+=============================================================
+Rebuilt for mobile-first GitHub-hosted viewing.
+Max card width 520px. Single column. Finger-friendly.
+Same dark navy/gold design — stacks cleanly on any phone.
+
+TRIGGER: "Betting card for Round X"
+
+=============================================================
+PLACEHOLDER REFERENCE:
+
+Header:
+  8          e.g. 5
+  23–26 April 2026           e.g. "2–6 April 2026"
+  $30          e.g. $30
+  v6.2         e.g. v6.1
+
+── SECTION 1: 4-LEG MULTI ──────────────────────────────────
+  ~$4.39        e.g. ~$8.50
+  $10           e.g. $10
+  ~$43.90      e.g. ~$85
+  70        e.g. 70
+
+  For each leg L1–L4:
+  {{Ln_TIP}}                Tipped team (uppercase)
+  {{Ln_OPP}}                Opponent
+  {{Ln_VENUE_TIME}}         e.g. CommBank, Fri 8pm
+  {{Ln_REASON}}             One-line reason (~100 chars)
+  {{Ln_MODEL_PCT}}          e.g. 78%
+  {{Ln_MKT_PCT}}            e.g. 65%
+  {{Ln_EDGE_PCT}}           e.g. +13%
+  {{Ln_PRICE}}              e.g. $1.55
+
+  $1.92 x $1.37 x $1.67   e.g. $1.55 × $1.21 × $1.85 × $1.61
+  ~57.5%      e.g. ~48%
+  ~$43.90      e.g. $58.00
+  Cowboys (3 upset cond) excluded · Broncos (3 upset cond) excluded · Storm HARD BLOCK           e.g. "No wet weather · All legs EV cleared"
+
+  If no multi qualifies — replace entire section 1 with PASS block:
+       Brief reason + closest candidate
+
+── SECTION 2: ANYTIME TRYSCORERS ───────────────────────────
+  For each of 3 cards (BEST / VALUE / JUICY):
+  {{TRY_x_PLAYER}}          Player name
+  {{TRY_x_TEAM}}            Team name
+  {{TRY_x_JERSEY}}          e.g. #2 Right Wing
+  {{TRY_x_MATCHUP}}         e.g. vs Bulldogs, Fri 4pm
+  {{TRY_x_STAT1_LABEL}}     e.g. 2026 Rate
+  {{TRY_x_STAT1_VALUE}}     e.g. 3/3
+  {{TRY_x_STAT2_LABEL}}     e.g. H2H vs Opp
+  {{TRY_x_STAT2_VALUE}}     e.g. 5 tries / 7 games
+  {{TRY_x_STAT3_LABEL}}     e.g. Implied
+  {{TRY_x_STAT3_VALUE}}     e.g. 62%
+  {{TRY_x_STAT4_LABEL}}     e.g. Est. Rate
+  {{TRY_x_STAT4_VALUE}}     e.g. ~77%
+  {{TRY_x_EDGE_TEXT}}       2–3 sentences on edge + why market is wrong
+  {{TRY_x_PRICE_LABEL}}     e.g. $1.61 confirmed · implied 62.1%
+  {{TRY_x_EDGE_BADGE}}      e.g. EDGE +15%
+  {{TRY_x_PRICE}}           e.g. $1.61
+
+── SECTION 3: FIRST TRY SCORER ─────────────────────────────
+  For each of 3 picks (ranks 1–3):
+  {{FTS_n_PLAYER}}          Player name
+  {{FTS_n_GAME}}            e.g. Rabbitohs v Bulldogs
+  {{FTS_n_MATCHUP}}         e.g. Accor Stadium · Fri 4pm · Rabbitohs 57% to win
+  {{FTS_n_REASON}}          2–3 sentences. Use <strong> for key phrases.
+  {{FTS_n_ANYTIME_PCT}}     e.g. ~77%
+  {{FTS_n_FAIR_VALUE}}      e.g. ~26%
+  {{FTS_n_IMPLIED}}         e.g. ~11%
+  {{FTS_n_PRICE}}           e.g. ~$7
+  {{FTS_n_RETURNS}}         e.g. $10 → ~$70
+
+── SECTION 4: GROUP CHAT INTEL ─────────────────────────────
+  NOT formal picks. Sharp observations only. 3–5 bullets.
+  <strong>Storm have 20 straight home wins vs Souths</strong> — but Hard Block stays. Back Johnston and Mitchell, not the Storm. Let the record die. through <strong>Panthers only 66% at McDonald Jones</strong> — Darwin fatigue (GP extra time in heat) + Knights home + Marzhew concussion replaced by Schiller. Not a multi leg.
+  Each under ~130 chars. Use <strong> for the key stat/number.
+  Remove unused INTEL items — 3 minimum, 5 maximum.
+
+Footer:
+  37/56         e.g. 23/32
+  66.1%            e.g. 71.9%
+
+=============================================================
+RULES:
+- Anytime % = Games Scored / Games Played — NOT tries / games
+- Juicy tryscorer must be $4.00+ — never mid-range
+- Edge = estimated rate MINUS implied probability
+  Must be >=12% for anytime, >=+8% for multi legs
+- FTS fair value = anytime% x (1/avg team tries/game) x position factor
+  Backs ~1.2x | Forwards ~0.7x
+- Mark estimated prices with ~ prefix
+- If Multi A/B PASS, replace section with PASS block (see template below)
+- Remove INTEL_4/5 if fewer than 5 insights exist
+=============================================================
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NRL 2026 — Round 7 Betting Card</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<title>NRL 2026 — Round 8 Betting Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0a1628;--navy-mid:#112240;--navy-light:#1a3356;--gold:#f0b429;--gold-dim:#c8941f;--white:#ffffff;--off-white:#e8edf5;--grey:#8899aa;--grey-light:#b8c8d8;--best-bg:#0d2e1a;--best-border:#1a5c38;--best-text:#3ddc84;--value-bg:#1a2a00;--value-border:#2d5012;--value-text:#7ecf3a;--juicy-bg:#2a1200;--juicy-border:#6b3000;--juicy-text:#ff8c42;--multi-bg:#0d2040;--multi-border:#1a4080;--multi-text:#4ab4ff;--first-bg:#1a0a2e;--first-border:#3d1a6b;--first-text:#b47aff;}
+:root {
+  --navy:#0a1628; --navy-mid:#112240; --navy-light:#1a3356;
+  --gold:#f0b429; --gold-dim:#c8941f;
+  --white:#ffffff; --off-white:#e8edf5; --grey:#8899aa; --grey-light:#b8c8d8;
+  --best-bg:#0d2e1a; --best-border:#1a5c38; --best-text:#3ddc84;
+  --value-bg:#1a2a00; --value-border:#2d5012; --value-text:#7ecf3a;
+  --juicy-bg:#2a1200; --juicy-border:#6b3000; --juicy-text:#ff8c42;
+  --multi-bg:#0d2040; --multi-border:#1a4080; --multi-text:#4ab4ff;
+  --first-bg:#1a0a2e; --first-border:#3d1a6b; --first-text:#b47aff;
+}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-body{background:#060e1a;font-family:'Barlow',sans-serif;color:#fff;min-height:100vh;padding:12px;}
+html{font-size:16px;}
+body{background:#060e1a;font-family:'Barlow',sans-serif;color:var(--white);min-height:100vh;padding:12px;}
 .card{width:100%;max-width:520px;margin:0 auto;display:flex;flex-direction:column;}
+
+/* HEADER */
 .header{background:linear-gradient(135deg,#0a1628 0%,#1a3356 55%,#0a1628 100%);border:1px solid var(--navy-light);border-bottom:3px solid var(--gold);border-radius:8px 8px 0 0;padding:20px 16px 18px;position:relative;overflow:hidden;}
 .header::after{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(240,180,41,0.07) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
-.h-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
-.h-eye{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
-.h-title{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;line-height:1;color:#fff;letter-spacing:-1px;}
-.h-title span{color:var(--gold);}
-.h-sub{font-size:11px;color:var(--grey-light);margin-top:4px;line-height:1.4;}
-.h-badge{text-align:right;flex-shrink:0;}
-.pill{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;background:rgba(240,180,41,0.12);color:var(--gold);border:1px solid rgba(240,180,41,0.3);padding:3px 8px;border-radius:2px;}
-.stake-lbl{font-size:9px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;margin-top:8px;}
-.stake-val{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--off-white);line-height:1;}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.header-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
+.header-title{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;line-height:1;color:var(--white);letter-spacing:-1px;}
+.header-title span{color:var(--gold);}
+.header-sub{font-size:11px;color:var(--grey-light);margin-top:4px;font-weight:500;line-height:1.4;}
+.header-badge{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0;}
+.pill{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;background:rgba(240,180,41,0.12);color:var(--gold);border:1px solid rgba(240,180,41,0.3);padding:3px 8px;border-radius:2px;white-space:nowrap;}
+.stake{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--off-white);line-height:1;margin-top:4px;}
+.stake-label{font-size:9px;color:var(--grey);letter-spacing:2px;text-transform:uppercase;}
+
+/* SECTIONS */
 .section{border:1px solid var(--navy-light);border-top:none;background:var(--navy);}
 .section:last-child{border-radius:0 0 8px 8px;}
-.sec-hdr{padding:10px 16px;background:var(--navy-mid);border-bottom:1px solid var(--navy-light);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.sec-lbl{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;}
-.sec-line{flex:1;height:1px;background:linear-gradient(to right,rgba(240,180,41,0.3),transparent);min-width:20px;}
-.sec-sub{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:600;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;width:100%;padding-top:2px;}
-
-/* BEST SINGLE */
-.bsb{margin:16px;background:linear-gradient(135deg,rgba(240,180,41,0.07),rgba(240,180,41,0.02));border:2px solid var(--gold-dim);border-radius:4px;padding:14px 16px;}
-.bsb-eye{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
-.bsb-pick{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:#fff;line-height:1.1;margin-bottom:10px;}
-.bsb-pick em{color:var(--gold);font-style:normal;}
-.bsb-row{display:flex;gap:20px;margin-bottom:10px;flex-wrap:wrap;}
-.bsb-sl{font-size:8px;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;font-weight:600;}
-.bsb-sv{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:#fff;}
-.bsb-sv.gold{color:var(--gold);}
-.bsb-sv.green{color:#3ddc84;}
-.bsb-pr-row{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:10px;}
-.bsb-price{font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;color:var(--gold);line-height:1;}
-.bsb-badge{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;padding:6px 14px;border-radius:2px;background:rgba(61,220,132,0.15);color:#3ddc84;}
-.bsb-impl{font-size:10px;color:var(--grey);margin-bottom:4px;}
-.bsb-why{font-size:12px;color:var(--grey-light);line-height:1.6;padding-top:10px;border-top:1px solid var(--navy-light);}
-.bsb-why strong{color:#fff;}
-.bsb-note{margin-top:8px;padding:8px 10px;background:rgba(240,180,41,0.06);border-left:3px solid var(--gold-dim);font-size:11px;color:var(--gold);line-height:1.5;}
-.bsb-risk{margin-top:8px;font-size:11px;color:var(--grey);display:flex;gap:5px;line-height:1.5;}
-.bsb-risk::before{content:'⚠';flex-shrink:0;}
+.section-header{padding:10px 16px;background:var(--navy-mid);border-bottom:1px solid var(--navy-light);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.section-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--gold);text-transform:uppercase;}
+.section-line{flex:1;height:1px;background:linear-gradient(to right,rgba(240,180,41,0.3),transparent);min-width:20px;}
+.section-sublabel{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:600;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;width:100%;padding-top:2px;}
 
 /* MULTI */
-.multi-wrap{padding:16px;}
-.multi-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:4px;}
+.multi-wrapper{padding:16px;}
+.multi-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
 .multi-title span{color:var(--multi-text);}
 .multi-meta{font-size:11px;color:var(--grey);line-height:1.4;margin-bottom:12px;}
-.multi-sum{display:flex;background:var(--navy-mid);border:1px solid var(--navy-light);border-radius:4px;overflow:hidden;margin-bottom:14px;}
+.multi-summary{display:flex;background:var(--navy-mid);border:1px solid var(--navy-light);border-radius:4px;overflow:hidden;margin-bottom:14px;}
 .msi{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 6px;border-right:1px solid var(--navy-light);}
 .msi:last-child{border-right:none;}
-.msi-lbl{font-size:8px;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;font-weight:600;margin-bottom:3px;}
-.msi-val{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#fff;}
-.msi-val.gold{color:var(--gold);}
-.msi-val.blue{color:var(--multi-text);}
-.legs{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
-.leg{background:var(--multi-bg);border:1px solid var(--multi-border);border-radius:4px;padding:12px 12px 12px 15px;position:relative;}
+.msi-label{font-size:8px;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;font-weight:600;margin-bottom:3px;}
+.msi-value{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--white);}
+.msi-value.gold{color:var(--gold);}
+.msi-value.blue{color:var(--multi-text);}
+.multi-legs{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.leg{background:var(--multi-bg);border:1px solid var(--multi-border);border-radius:4px;padding:12px 12px 12px 15px;position:relative;overflow:hidden;}
 .leg::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--multi-text);}
-.leg-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:5px;}
-.leg-num{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--grey);}
+.leg-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.leg-num{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--grey);}
 .leg-price{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--gold);}
-.leg-match{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:4px;}
-.leg-match .tip{color:var(--gold);}
-.leg-rsn{font-size:12px;color:var(--grey-light);line-height:1.4;margin-bottom:8px;}
+.leg-matchup{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:4px;}
+.leg-matchup .tip{color:var(--gold);}
+.leg-reason{font-size:12px;color:var(--grey-light);line-height:1.4;margin-bottom:8px;}
 .leg-stats{display:flex;gap:14px;}
-.ls-lbl{font-size:8px;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;font-weight:600;}
-.ls-val{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:#fff;}
-.ls-val.gold{color:var(--gold);}
-.ls-val.green{color:#3ddc84;}
-.payout{background:linear-gradient(135deg,rgba(74,180,255,0.06),rgba(74,180,255,0.02));border:1px solid var(--multi-border);border-radius:4px;padding:12px 14px;}
+.leg-stat-label{font-size:8px;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;font-weight:600;}
+.leg-stat-value{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--white);}
+.leg-stat-value.gold{color:var(--gold);}
+.leg-stat-value.green{color:#3ddc84;}
+.multi-payout{background:linear-gradient(135deg,rgba(74,180,255,0.06),rgba(74,180,255,0.02));border:1px solid var(--multi-border);border-radius:4px;padding:12px 14px;}
 .payout-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;}
-.payout-lbl{font-size:9px;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;font-weight:600;}
-.payout-val{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--gold);line-height:1;}
+.payout-label{font-size:9px;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;font-weight:600;}
+.payout-value{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--gold);line-height:1;}
 .payout-flags{font-size:11px;color:var(--grey-light);line-height:1.4;}
-.payout-flags strong{color:#fff;}
+.payout-flags strong{color:var(--white);}
 
-/* PASS */
+/* PASS BLOCK */
 .pass-block{margin:16px;background:rgba(136,153,170,0.06);border:1px solid var(--navy-light);border-radius:4px;padding:16px;}
 .pass-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:var(--grey);margin-bottom:6px;display:flex;align-items:center;gap:8px;}
 .pass-badge{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;background:rgba(136,153,170,0.1);color:var(--grey);border:1px solid rgba(136,153,170,0.2);padding:2px 8px;border-radius:2px;}
-.pass-txt{font-size:12px;color:var(--grey);line-height:1.6;}
-.pass-txt strong{color:var(--grey-light);}
+.pass-reason{font-size:12px;color:var(--grey);line-height:1.6;}
+.pass-reason strong{color:var(--grey-light);}
 
 /* TRYSCORER */
 .try-grid{padding:16px;display:flex;flex-direction:column;gap:12px;}
@@ -95,485 +186,495 @@ body{background:#060e1a;font-family:'Barlow',sans-serif;color:#fff;min-height:10
 .try-card.value{background:var(--value-bg);border:1px solid var(--value-border);}
 .try-card.juicy{background:var(--juicy-bg);border:1px solid var(--juicy-border);}
 .try-tier{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:2px;width:fit-content;}
-.best .try-tier{background:rgba(61,220,132,0.1);color:var(--best-text);border:1px solid var(--best-border);}
-.value .try-tier{background:rgba(126,207,58,0.1);color:var(--value-text);border:1px solid var(--value-border);}
-.juicy .try-tier{background:rgba(255,140,66,0.1);color:var(--juicy-text);border:1px solid var(--juicy-border);}
-.try-player{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:#fff;line-height:1;}
-.try-team{font-size:11px;color:var(--grey-light);margin-top:2px;line-height:1.4;}
+.try-card.best .try-tier{background:rgba(61,220,132,0.1);color:var(--best-text);border:1px solid var(--best-border);}
+.try-card.value .try-tier{background:rgba(126,207,58,0.1);color:var(--value-text);border:1px solid var(--value-border);}
+.try-card.juicy .try-tier{background:rgba(255,140,66,0.1);color:var(--juicy-text);border:1px solid var(--juicy-border);}
+.try-player{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:var(--white);line-height:1;}
+.try-team{font-size:11px;color:var(--grey-light);font-weight:500;margin-top:2px;line-height:1.4;}
 .try-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.try-sl{font-size:8px;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;font-weight:600;}
-.try-sv{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:#fff;}
-.try-sv.gold{color:var(--gold);}
-.best .try-sv.accent{color:var(--best-text);}
-.value .try-sv.accent{color:var(--value-text);}
-.juicy .try-sv.accent{color:var(--juicy-text);}
+.try-stat-label{font-size:8px;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;font-weight:600;}
+.try-stat-value{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--white);}
+.try-stat-value.gold{color:var(--gold);}
+.try-card.best .try-stat-value.accent{color:var(--best-text);}
+.try-card.value .try-stat-value.accent{color:var(--value-text);}
+.try-card.juicy .try-stat-value.accent{color:var(--juicy-text);}
 .try-edge-row{display:flex;align-items:flex-start;gap:6px;padding:8px 10px;background:rgba(255,255,255,0.03);border-radius:3px;border:1px solid rgba(255,255,255,0.06);}
-.try-edge-txt{font-size:12px;color:var(--grey-light);line-height:1.5;}
-.try-pr-row{display:flex;align-items:flex-end;justify-content:space-between;}
+.try-edge-icon{font-size:12px;flex-shrink:0;margin-top:1px;}
+.try-edge-text{font-size:12px;color:var(--grey-light);line-height:1.5;}
+.try-price-row{display:flex;align-items:flex-end;justify-content:space-between;}
 .try-price{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;line-height:1;}
-.best .try-price{color:var(--best-text);}
-.value .try-price{color:var(--value-text);}
-.juicy .try-price{color:var(--juicy-text);}
-.try-impl{font-size:11px;color:var(--grey);margin-bottom:4px;}
-.try-ebadge{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;padding:4px 10px;border-radius:2px;}
-.best .try-ebadge{background:rgba(61,220,132,0.15);color:var(--best-text);}
-.value .try-ebadge{background:rgba(126,207,58,0.15);color:var(--value-text);}
-.juicy .try-ebadge{background:rgba(255,140,66,0.15);color:var(--juicy-text);}
+.try-card.best .try-price{color:var(--best-text);}
+.try-card.value .try-price{color:var(--value-text);}
+.try-card.juicy .try-price{color:var(--juicy-text);}
+.try-implied{font-size:11px;color:var(--grey);margin-bottom:4px;}
+.try-edge-badge{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;padding:4px 10px;border-radius:2px;}
+.try-card.best .try-edge-badge{background:rgba(61,220,132,0.15);color:var(--best-text);}
+.try-card.value .try-edge-badge{background:rgba(126,207,58,0.15);color:var(--value-text);}
+.try-card.juicy .try-edge-badge{background:rgba(255,140,66,0.15);color:var(--juicy-text);}
 
-/* FTS */
-.fts-grid{padding:16px;display:flex;flex-direction:column;gap:10px;}
-.fts-card{background:var(--first-bg);border:1px solid var(--first-border);border-radius:4px;padding:14px 14px 14px 18px;position:relative;}
+/* FIRST TRY SCORER */
+.first-try-grid{padding:16px;display:flex;flex-direction:column;gap:10px;}
+.fts-card{background:var(--first-bg);border:1px solid var(--first-border);border-radius:4px;padding:14px 14px 14px 18px;position:relative;overflow:hidden;}
 .fts-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--first-text);}
 .fts-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px;}
-.fts-rnk{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(180,122,255,0.4);margin-bottom:2px;}
-.fts-player{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#fff;line-height:1.1;}
-.fts-match{font-size:10px;color:var(--first-text);margin-top:2px;line-height:1.3;}
-.fts-pc{text-align:right;flex-shrink:0;}
+.fts-rank-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(180,122,255,0.4);margin-bottom:2px;}
+.fts-player{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--white);line-height:1.1;}
+.fts-matchup{font-size:10px;color:var(--first-text);font-weight:500;margin-top:2px;line-height:1.3;}
+.fts-price-col{text-align:right;flex-shrink:0;}
 .fts-price{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--first-text);line-height:1;}
-.fts-ret{font-size:10px;color:var(--grey);margin-top:2px;}
+.fts-returns{font-size:10px;color:var(--grey);margin-top:2px;}
 .fts-reason{font-size:12px;color:var(--grey-light);line-height:1.5;margin-bottom:8px;}
-.fts-reason strong{color:#fff;}
+.fts-reason strong{color:var(--white);}
 .fts-stats{display:flex;gap:16px;}
-.fts-sl{font-size:8px;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;font-weight:600;}
-.fts-sv{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;}
-.fts-sv.gold{color:var(--gold);}
-.fts-sv.purple{color:var(--first-text);}
+.fts-stat-label{font-size:8px;letter-spacing:1.5px;color:var(--grey);text-transform:uppercase;font-weight:600;}
+.fts-stat-value{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;}
+.fts-stat-value.gold{color:var(--gold);}
+.fts-stat-value.purple{color:var(--first-text);}
 
-/* INTEL */
+/* GROUP CHAT INTEL */
 .intel-block{padding:16px;}
-.intel-disc{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--grey);text-transform:uppercase;margin-bottom:12px;}
+.intel-disclaimer{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--grey);text-transform:uppercase;margin-bottom:12px;}
 .intel-list{display:flex;flex-direction:column;gap:8px;}
 .intel-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--navy-mid);border:1px solid var(--navy-light);border-left:3px solid var(--gold-dim);border-radius:0 4px 4px 0;}
-.intel-bul{font-size:14px;flex-shrink:0;line-height:1.4;}
-.intel-txt{font-size:13px;color:var(--off-white);line-height:1.5;}
-.intel-txt strong{color:var(--gold);}
-
-/* MARKETS TABLE */
-.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-.mkts{width:100%;min-width:460px;border-collapse:collapse;font-size:11px;}
-.mkts th{padding:7px 8px;text-align:left;font-family:'Barlow Condensed',sans-serif;font-size:8px;font-weight:700;letter-spacing:2px;color:var(--grey);text-transform:uppercase;background:var(--navy-mid);border-bottom:1px solid var(--navy-light);white-space:nowrap;}
-.mkts th:first-child,.mkts td:first-child{padding-left:14px;}
-.mkts th:last-child,.mkts td:last-child{padding-right:14px;}
-.mkts td{padding:7px 8px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;color:var(--grey-light);}
-.mkts tr:last-child td{border-bottom:none;}
-.mkt{color:var(--off-white)!important;font-weight:600;}
-.sel{color:#3ddc84;font-weight:700;white-space:nowrap;}
-.pss{color:var(--grey);white-space:nowrap;}
-.blk{color:#ff6b35;font-weight:700;white-space:nowrap;}
+.intel-bullet{font-size:14px;flex-shrink:0;line-height:1.4;}
+.intel-text{font-size:13px;color:var(--off-white);line-height:1.5;}
+.intel-text strong{color:var(--gold);}
 
 /* FOOTER */
 .footer{padding:12px 16px;border:1px solid var(--navy-light);border-top:none;border-radius:0 0 8px 8px;background:var(--navy-mid);}
-.f-left{font-size:10px;color:var(--grey);margin-bottom:2px;}
-.f-right{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--grey);letter-spacing:1px;}
-.f-right span{color:var(--gold);}
-.disc{margin-top:8px;font-size:9px;color:rgba(136,153,170,0.5);text-align:center;padding:0 8px;line-height:1.4;}
+.footer-left{font-size:10px;color:var(--grey);letter-spacing:0.5px;margin-bottom:2px;}
+.footer-right{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--grey);letter-spacing:1px;}
+.footer-right span{color:var(--gold);}
+.disclaimer{margin-top:8px;font-size:9px;color:rgba(136,153,170,0.5);text-align:center;letter-spacing:0.5px;padding:0 8px;line-height:1.4;}
 </style>
 </head>
 <body>
 <div class="card">
 
-<!-- HEADER -->
+<!-- ══ HEADER ══════════════════════════════════════════════════ -->
 <div class="header">
-  <div class="h-top">
+  <div class="header-top">
     <div>
-      <div class="h-eye">NRL 2026 — Betting Card</div>
-      <div class="h-title">ROUND <span>7</span></div>
-      <div class="h-sub">16–19 April 2026 · Model v6.2 · Monte Carlo 1,000 runs</div>
+      <div class="header-eyebrow">NRL 2026 — Betting Card</div>
+      <div class="header-title">ROUND <span>8</span></div>
+      <div class="header-sub">23–26 April 2026 · Model v6.2 · Monte Carlo 1,000 runs</div>
     </div>
-    <div class="h-badge">
+    <div class="header-badge">
       <div class="pill">💰 BETTING CARD</div>
-      <div class="stake-lbl">Max Exposure</div>
-      <div class="stake-val">$20</div>
+      <div style="margin-top:6px">
+        <div class="stake-label">Max Exposure</div>
+        <div class="stake">$30</div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- BEST SINGLE BET -->
-<div class="section">
-  <div class="sec-hdr">
-    <span class="sec-lbl">Best Single Bet</span>
-    <div class="sec-line"></div>
-    <span class="sec-sub">H2H confirmed price · Tryscorer priority note below · $10 stake → $15.80</span>
-  </div>
-  <div class="bsb">
-    <div class="bsb-eye">🏆 Best Single Bet — Cowboys H2H</div>
-    <div class="bsb-pick"><em>COWBOYS</em> to beat Sea Eagles</div>
-    <div class="bsb-row">
-      <div>
-        <div class="bsb-sl">Model</div>
-        <div class="bsb-sv gold">83.3%</div>
-      </div>
-      <div>
-        <div class="bsb-sl">Market</div>
-        <div class="bsb-sv">63.3%</div>
-      </div>
-      <div>
-        <div class="bsb-sl">Edge</div>
-        <div class="bsb-sv green">+20.0%</div>
-      </div>
-      <div>
-        <div class="bsb-sl">Conf Floor</div>
-        <div class="bsb-sv green">83.3% ✅</div>
-      </div>
-    </div>
-    <div class="bsb-pr-row">
-      <div>
-        <div class="bsb-impl">$1.58 confirmed · implied 63.3%</div>
-        <div class="bsb-badge">EDGE +20.0%</div>
-      </div>
-      <div class="bsb-price">$1.58</div>
-    </div>
-    <div class="bsb-why">
-      <strong>Why Sportsbet has this wrong:</strong> Townsville is the highest H/A differential venue in the comp (+20.4% historical). Cowboys adjusted Elo 1602 (4-game streak, +36 momentum) vs Sea Eagles 1530 — with the +85 fortress, the Elo gap hits 157 points. Model: 83.3%. Market: 63.3%. Sportsbet is pricing Sea Eagles' Foran form without accounting for the fact that Townsville has historically broken visiting teams regardless of who's coaching. Sea Eagles are 0 wins at QCBS in the current coaching era.
-      <div class="bsb-note">⚠️ TRYSCORER FIRST: Johnston anytime vs Dragons should be checked before placing this bet. His price last round was a confirmed $1.50 — if available at similar odds this week, his estimated +33% edge supersedes this pick. Confirm on Sportsbet. If $1.50: take Johnston. If longer than $1.65: take Cowboys. Both are live.</div>
-    </div>
-    <div class="bsb-risk">Sea Eagles won 6 straight at Townsville (current era — venue H2H override already applied in model). Taulagi absent reduces Cowboys left-edge try threat. Foran system unbeaten.</div>
-  </div>
-</div>
-
-<!-- MULTI A -->
-<div class="section">
-  <div class="sec-hdr">
-    <span class="sec-lbl">Multi A — Banker Build</span>
-    <div class="sec-line"></div>
-    <span class="sec-sub">3 legs · All ≥8% EV edge · All model >70% · All upset conditions checked · $10 stake</span>
-  </div>
-  <div class="multi-wrap">
-    <div class="multi-title">Banker <span>Build</span></div>
-    <div class="multi-meta">3 legs — Cowboys H2H + Rabbitohs H2H + Warriors −10.5 line · No shared games with Multi B · All prices independently confirmed or marked ~</div>
-    <div class="multi-sum">
-      <div class="msi">
-        <span class="msi-lbl">Est. Odds</span>
-        <span class="msi-val gold">~$3.74</span>
-      </div>
-      <div class="msi">
-        <span class="msi-lbl">Stake</span>
-        <span class="msi-val">$10</span>
-      </div>
-      <div class="msi">
-        <span class="msi-lbl">Est. Return</span>
-        <span class="msi-val blue">~$37.40</span>
-      </div>
-    </div>
-    <div class="legs">
-
-      <div class="leg">
-        <div class="leg-top">
-          <span class="leg-num">L1 — COWBOYS H2H · 0 UPSET CONDITIONS ✅</span>
-          <span class="leg-price">$1.58</span>
-        </div>
-        <div class="leg-match"><span class="tip">COWBOYS</span> v Sea Eagles</div>
-        <div class="leg-rsn">Townsville elite fortress (+85 Elo). Cowboys adj 1602 vs Sea Eagles 1530 — gap of 157 with home advantage. 4-game win streak. 0 upset conditions. Market has this at 63.3% — model says 83.3%.</div>
-        <div class="leg-stats">
-          <div><div class="ls-lbl">Model</div><div class="ls-val gold">83.3%</div></div>
-          <div><div class="ls-lbl">Mkt</div><div class="ls-val">63.3%</div></div>
-          <div><div class="ls-lbl">Edge</div><div class="ls-val green">+20.0%</div></div>
-          <div><div class="ls-lbl">Thu 7:50pm</div><div class="ls-val" style="font-size:10px;color:var(--grey-light)">QCBS Townsville</div></div>
-        </div>
-      </div>
-
-      <div class="leg">
-        <div class="leg-top">
-          <span class="leg-num">L2 — RABBITOHS H2H · 0 UPSET CONDITIONS ✅</span>
-          <span class="leg-price">$1.24</span>
-        </div>
-        <div class="leg-match"><span class="tip">RABBITOHS</span> v Dragons</div>
-        <div class="leg-rsn">Largest Elo gap of the round (238 pts). Dragons 0-6, 10-game losing streak, Gutherson still absent. Dufty's fullback return is a downgrade but barely dents a 238-pt model gap. Market at 80.6% is 15% below model.</div>
-        <div class="leg-stats">
-          <div><div class="ls-lbl">Model</div><div class="ls-val gold">95.4%</div></div>
-          <div><div class="ls-lbl">Mkt</div><div class="ls-val">80.6%</div></div>
-          <div><div class="ls-lbl">Edge</div><div class="ls-val green">+14.8%</div></div>
-          <div><div class="ls-lbl">Sat 5:30pm</div><div class="ls-val" style="font-size:10px;color:var(--grey-light)">Accor Stadium</div></div>
-        </div>
-      </div>
-
-      <div class="leg">
-        <div class="leg-top">
-          <span class="leg-num">L3 — WARRIORS −10.5 LINE · 1 UPSET CONDITION ✅</span>
-          <span class="leg-price">~$1.91</span>
-        </div>
-        <div class="leg-match"><span class="tip">WARRIORS</span> −10.5</div>
-        <div class="leg-rsn">Model projects Warriors win by ~30 pts. Line is only −10.5 — a massive gap. Cover probability 77.2% vs market 52.4% implied → edge +24.8%. Titans venue H2H (+20 Elo override) already applied. Confirm line price on Sportsbet before placing.</div>
-        <div class="leg-stats">
-          <div><div class="ls-lbl">Cover Prob</div><div class="ls-val gold">77.2%</div></div>
-          <div><div class="ls-lbl">Mkt Impl</div><div class="ls-val">52.4%</div></div>
-          <div><div class="ls-lbl">Edge</div><div class="ls-val green">+24.8%</div></div>
-          <div><div class="ls-lbl">Sat 3:00pm</div><div class="ls-val" style="font-size:10px;color:var(--grey-light)">Go Media, Auckland</div></div>
-        </div>
-      </div>
-
-    </div>
-    <div class="payout">
-      <div class="payout-top">
-        <div class="payout-lbl">$10 stake returns approx.</div>
-        <div class="payout-val">~$37.40</div>
-      </div>
-      <div class="payout-flags"><strong>$1.58 × $1.24 × ~$1.91</strong> · Combined model prob: <strong>~61%</strong><br>Verify Warriors −10.5 line price on Sportsbet · No wet weather flagged · Multi B PASS</div>
-    </div>
-  </div>
-</div>
-
-<!-- MULTI B PASS -->
-<div class="section">
-  <div class="sec-hdr">
-    <span class="sec-lbl">Multi B — Value Build</span>
-    <div class="sec-line"></div>
-  </div>
+<!-- ══ SECTION 1: 4-LEG MULTI ══════════════════════════════════ -->
+<!--
+  If multi qualifies: use the full multi block below.
+  If no multi qualifies: replace entire section content with pass-block.
+  Pass block example:
   <div class="pass-block">
-    <div class="pass-title">🎲 MULTI B — PASS <span class="pass-badge">NO QUALIFYING LEGS</span></div>
-    <div class="pass-txt">After Cowboys, Rabbitohs and Warriors are used in Multi A, the remaining five games don't produce qualifying legs. <strong>Tigers/Broncos:</strong> 2 upset conditions (Campbelltown H2H + injury cascade) — hard multi exclusion gate applies. <strong>Raiders/Storm:</strong> coin-flip, Raiders edge only +1.5%. <strong>Dolphins/Panthers Darwin:</strong> market overprices Panthers, no useable edge on either side. <strong>Eels/Bulldogs:</strong> model is a coin-flip (54.7% Bulldogs) but Eels confidence fails the 58% floor — massive market overreaction to last week. Closest candidate: <strong>Roosters +9.5% at $1.27</strong> — qualifies as standalone bet but can't anchor a 3-leg multi alone.</div>
+    <div class="pass-title">📦 MULTI A — PASS <span class="pass-badge">NO QUALIFYING LEGS</span></div>
+    <div class="pass-reason"></div>
+  </div>
+-->
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">🎯 Multi A — Banker Build</span>
+    <div class="section-line"></div>
+    <span class="section-sublabel">3 legs · Target $3–5 · All legs pass &ge;70% confidence + upset conditions gate</span>
+  </div>
+  <div class="multi-wrapper">
+    <div class="multi-title">Banker <span>Build</span></div>
+    <div class="multi-meta">4 independent legs · No shared games · All upset conditions cleared</div>
+    <div class="multi-summary">
+      <div class="msi">
+        <span class="msi-label">Est. Odds</span>
+        <span class="msi-value gold">~$4.39</span>
+      </div>
+      <div class="msi">
+        <span class="msi-label">Stake</span>
+        <span class="msi-value">$10</span>
+      </div>
+      <div class="msi">
+        <span class="msi-label">Est. Return</span>
+        <span class="msi-value blue">~$43.90</span>
+      </div>
+    </div>
+    <div class="multi-legs">
+
+      <div class="leg">
+        <div class="leg-top">
+          <span class="leg-num">L1</span>
+          <span class="leg-price">~$1.92</span>
+        </div>
+        <div class="leg-matchup"><span class="tip">MITCHELL</span> v Storm (anytime try)</div>
+        <div class="leg-reason">Mitchell is scoring at 83% through 6 games and the Storm are the perfect opponent — five consecutive losses with 32 missed tackles in R7 alone, their defensive structure has completely broken down across every channel. He plays left centre, targeting Storm's exposed right edge. Sportsbet prices him at ~$1.92 (implied 52%) which is 31 points shy of his model rate. This is the highest-edge multi leg available this round.</div>
+        <div class="leg-stats">
+          <div><div class="leg-stat-label">Model</div><div class="leg-stat-value gold">83%</div></div>
+          <div><div class="leg-stat-label">Mkt</div><div class="leg-stat-value">52%</div></div>
+          <div><div class="leg-stat-label">Edge</div><div class="leg-stat-value green">+31%</div></div>
+          <div><div class="leg-stat-label">Venue/Time</div><div class="leg-stat-value" style="font-size:11px;color:var(--grey-light)">AAMI Park, Sat 8pm</div></div>
+        </div>
+      </div>
+
+      <div class="leg">
+        <div class="leg-top">
+          <span class="leg-num">L2</span>
+          <span class="leg-price">~$1.37</span>
+        </div>
+        <div class="leg-matchup"><span class="tip">WARRIORS</span> v Dolphins</div>
+        <div class="leg-reason">Warriors are 88% to win in Wellington where they've taken four of their last five home games. The Dolphins travel without Nikorima — banned for two weeks — leaving Brad Schneider at halfback, a structural downgrade that disrupts their left-edge organisation entirely. CNK misses with a neck injury but Tuaupiki is a capable replacement and the home crowd factor is enormous at the Cake Tin. Market implied 72% means there's still 16 points of edge to extract.</div>
+        <div class="leg-stats">
+          <div><div class="leg-stat-label">Model</div><div class="leg-stat-value gold">88%</div></div>
+          <div><div class="leg-stat-label">Mkt</div><div class="leg-stat-value">72%</div></div>
+          <div><div class="leg-stat-label">Edge</div><div class="leg-stat-value green">+16%</div></div>
+          <div><div class="leg-stat-label">Venue/Time</div><div class="leg-stat-value" style="font-size:11px;color:var(--grey-light)">Hnry Stadium, Sat 6pm</div></div>
+        </div>
+      </div>
+
+      <div class="leg">
+        <div class="leg-top">
+          <span class="leg-num">L3</span>
+          <span class="leg-price">~$1.67</span>
+        </div>
+        <div class="leg-matchup"><span class="tip">TIGERS</span> v Raiders</div>
+        <div class="leg-reason">Raiders arrive at Leichhardt missing Hudson Young (2-game ban), Simi Sasagi (hamstring), and Josh Papalii (calf) — three of their most important contributors across edge, spine and forward pack simultaneously. Luai and Doueihi are clicking in the halves and Leichhardt is a genuine fortress. The sole upset condition is the historical H2H record, but with Raiders this depleted that signal is materially weakened. Market has Tigers at ~66% implied; model says 79%.</div>
+        <div class="leg-stats">
+          <div><div class="leg-stat-label">Model</div><div class="leg-stat-value gold">79%</div></div>
+          <div><div class="leg-stat-label">Mkt</div><div class="leg-stat-value">66%</div></div>
+          <div><div class="leg-stat-label">Edge</div><div class="leg-stat-value green">+13%</div></div>
+          <div><div class="leg-stat-label">Venue/Time</div><div class="leg-stat-value" style="font-size:11px;color:var(--grey-light)">Leichhardt, Thu 8pm</div></div>
+        </div>
+      </div>
+
+      <!-- L4 not used — 3-leg multi -->
+
+    </div>
+    <div class="multi-payout">
+      <div class="payout-top">
+        <div class="payout-label">$10 returns approx.</div>
+        <div class="payout-value">~$43.90</div>
+      </div>
+      <div class="payout-flags"><strong>$1.92 x $1.37 x $1.67</strong> · Model prob: <strong>~57.5%</strong><br>Cowboys (3 upset cond) excluded · Broncos (3 upset cond) excluded · Storm HARD BLOCK</div>
+    </div>
   </div>
 </div>
 
-<!-- ANYTIME TRYSCORERS -->
+<!-- ══ MULTI B: VALUE BUILD ═══════════════════════════════════ -->
 <div class="section">
-  <div class="sec-hdr">
-    <span class="sec-lbl">Anytime Try Scorer</span>
-    <div class="sec-line"></div>
-    <span class="sec-sub">Edge = Anytime% − Market Implied · Min ≥12% · All prices marked ~ are estimates — verify on Sportsbet</span>
+  <div class="section-header">
+    <span class="section-label">🎲 Multi B — Value Build</span>
+    <div class="section-line"></div>
+    <span class="section-sublabel">4 legs · Target $6–10 · One genuine value pick · All legs pass &ge;8% EV · No same-game stacking</span>
+  </div>
+  <div class="multi-wrapper">
+    <div class="multi-title">Value <span>Build</span></div>
+    <div class="multi-meta">4 legs · 1 value pick · Warriors + Tigers anchor both multis</div>
+    <div class="multi-summary">
+      <div class="msi">
+        <span class="msi-label">Est. Odds</span>
+        <span class="msi-value gold">~$9.23</span>
+      </div>
+      <div class="msi">
+        <span class="msi-label">Stake</span>
+        <span class="msi-value">$10</span>
+      </div>
+      <div class="msi">
+        <span class="msi-label">Est. Return</span>
+        <span class="msi-value blue">~$92.30</span>
+      </div>
+    </div>
+    <div class="multi-legs">
+
+      <div class="leg">
+        <div class="leg-top">
+          <span class="leg-num">L1 — Anchor</span>
+          <span class="leg-price">~$1.37</span>
+        </div>
+        <div class="leg-matchup"><span class="tip">WARRIORS</span> v Dolphins</div>
+        <div class="leg-reason">Warriors are 88% to win in Wellington where they've taken four of their last five home games. The Dolphins travel without Nikorima — banned for two weeks — leaving Brad Schneider at halfback, a structural downgrade that disrupts their left-edge organisation entirely. CNK misses with a neck injury but Tuaupiki is a capable replacement and the home crowd factor is enormous at the Cake Tin. Market implied 72% means there's still 16 points of edge to extract.</div>
+        <div class="leg-stats">
+          <div><div class="leg-stat-label">Model</div><div class="leg-stat-value gold">88%</div></div>
+          <div><div class="leg-stat-label">Mkt</div><div class="leg-stat-value">72%</div></div>
+          <div><div class="leg-stat-label">Edge</div><div class="leg-stat-value green">+16%</div></div>
+          <div><div class="leg-stat-label">Venue/Time</div><div class="leg-stat-value" style="font-size:11px;color:var(--grey-light)">Hnry Stadium, Sat 6pm</div></div>
+        </div>
+      </div>
+
+      <div class="leg">
+        <div class="leg-top">
+          <span class="leg-num">L2 — Anchor</span>
+          <span class="leg-price">~$1.67</span>
+        </div>
+        <div class="leg-matchup"><span class="tip">TIGERS</span> v Raiders</div>
+        <div class="leg-reason">Raiders arrive at Leichhardt missing Hudson Young (2-game ban), Simi Sasagi (hamstring), and Josh Papalii (calf) — three of their most important contributors across edge, spine and forward pack simultaneously. Luai and Doueihi are clicking in the halves and Leichhardt is a genuine fortress on a Thursday night. The sole upset condition is Raiders' historical H2H dominance, but with this much firepower stripped out, that signal is materially weakened. Model 79%, market 66%.</div>
+        <div class="leg-stats">
+          <div><div class="leg-stat-label">Model</div><div class="leg-stat-value gold">79%</div></div>
+          <div><div class="leg-stat-label">Mkt</div><div class="leg-stat-value">66%</div></div>
+          <div><div class="leg-stat-label">Edge</div><div class="leg-stat-value green">+13%</div></div>
+          <div><div class="leg-stat-label">Venue/Time</div><div class="leg-stat-value" style="font-size:11px;color:var(--grey-light)">Leichhardt, Thu 8pm</div></div>
+        </div>
+      </div>
+
+      <div class="leg" style="border-color:#f5a623;box-shadow:0 0 8px rgba(245,166,35,0.15);">
+        <div class="leg-top">
+          <span class="leg-num" style="color:#f5a623;">L3 — VALUE LEG ⭐</span>
+          <span class="leg-price">~$2.10</span>
+        </div>
+        <div class="leg-matchup"><span class="tip">NAWAQANITAWASE</span> anytime try (Roosters v Dragons)</div>
+        <div class="leg-reason">This is the sharpest price in the round. Dragons concede 65%+ of tries through their right edge — with Su'A banned, their right side is down to Couchman and a threadbare bench. Nawaqanitawase plays LEFT wing for the Roosters, meaning he runs directly at that exposed channel every time the Roosters go wide. He scored twice in R7, DCE and Walker will target the weak edge relentlessly, and Roosters are 95% to win comfortably. Market prices him as a secondary scorer behind Tedesco at ~$2.10 (implied 48%) — model says 67%. Nineteen points free.</div>
+        <div class="leg-stats">
+          <div><div class="leg-stat-label">Model</div><div class="leg-stat-value gold">67%</div></div>
+          <div><div class="leg-stat-label">Mkt</div><div class="leg-stat-value">48%</div></div>
+          <div><div class="leg-stat-label">Edge</div><div class="leg-stat-value green">+19%</div></div>
+          <div><div class="leg-stat-label">Venue/Time</div><div class="leg-stat-value" style="font-size:11px;color:var(--grey-light)">Allianz, Sat 4pm</div></div>
+        </div>
+      </div>
+
+      <div class="leg">
+        <div class="leg-top">
+          <span class="leg-num">L4 — Anchor</span>
+          <span class="leg-price">~$1.92</span>
+        </div>
+        <div class="leg-matchup"><span class="tip">MITCHELL</span> anytime try (Rabbitohs v Storm)</div>
+        <div class="leg-reason">Mitchell is scoring at 83% through 6 games — four tries in R7 alone — and this is the same structural edge backing Johnston in the Best Single. Storm's defensive collapse is real: five straight losses, 32 missed tackles in R7, second-half breakdowns in consecutive rounds. Mitchell plays left centre and attacks the right edge of a Storm defensive line that has no answers. Including him here alongside the Best Single is a deliberate double-up on the most reliable structural edge of the round.</div>
+        <div class="leg-stats">
+          <div><div class="leg-stat-label">Model</div><div class="leg-stat-value gold">83%</div></div>
+          <div><div class="leg-stat-label">Mkt</div><div class="leg-stat-value">52%</div></div>
+          <div><div class="leg-stat-label">Edge</div><div class="leg-stat-value green">+31%</div></div>
+          <div><div class="leg-stat-label">Venue/Time</div><div class="leg-stat-value" style="font-size:11px;color:var(--grey-light)">AAMI Park, Sat 8pm</div></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="multi-payout">
+      <div class="payout-top">
+        <div class="payout-label">$10 returns approx.</div>
+        <div class="payout-value">~$92.30</div>
+      </div>
+      <div class="payout-flags"><strong>$1.37 × $1.67 × $2.10 × $1.92</strong> · Model prob: <strong>~38.5%</strong><br>⚠️ Warriors &amp; Tigers anchor both multis — one fail collapses both · Mitchell also in Multi A L1 · Deliberate</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: ANYTIME TRYSCORERS ═══════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">Anytime Try Scorer</span>
+    <div class="section-line"></div>
+    <span class="section-sublabel">Edge = Est. Rate &minus; Market Implied · Min &ge;12% · Anytime% = Games Scored / Games Played</span>
   </div>
   <div class="try-grid">
 
+    <!-- BEST OPTION -->
     <div class="try-card best">
       <div class="try-tier">🏆 Best Option</div>
       <div>
         <div class="try-player">Alex Johnston</div>
-        <div class="try-team">South Sydney Rabbitohs · #2 Left Wing · vs Dragons · Sat 5:30pm Accor Stadium</div>
+        <div class="try-team">Rabbitohs · #2 Right Wing · vs Storm · AAMI Park · Sat 8:10pm</div>
       </div>
       <div class="try-stats">
-        <div><div class="try-sl">2026 Rate</div><div class="try-sv gold">5/5 — 100%</div></div>
-        <div><div class="try-sl">Edge Matchup</div><div class="try-sv gold">Dragons RIGHT — rated C</div></div>
-        <div><div class="try-sl">Market Implied</div><div class="try-sv">~66.7%</div></div>
-        <div><div class="try-sv accent" style="margin-top:4px">Est Edge ~+33%</div></div>
+        <div><div class="try-stat-label">2026 Rate</div><div class="try-stat-value gold">6/6 (100%)</div></div>
+        <div><div class="try-stat-label">Season Tries</div><div class="try-stat-value gold">7 in 6 games</div></div>
+        <div><div class="try-stat-label">Implied</div><div class="try-stat-value">~67%</div></div>
+        <div><div class="try-stat-label">Model Rate</div><div class="try-stat-value accent">100%</div></div>
       </div>
       <div class="try-edge-row">
-        <span style="font-size:12px;flex-shrink:0;margin-top:1px">🎯</span>
-        <span class="try-edge-txt">Johnston attacks Dragons' RIGHT edge — Tuipulotu (#2) and Stewart (#12) are both rated C, the weakest right-edge pairing in the comp. Rabbitohs win probability 95.4%, creating maximum scoring opportunities all game. All-time NRL leading try scorer is scoring in every game in 2026. R6 confirmed price was $1.50 — this week vs 0-6 Dragons, expect similar or shorter.</span>
+        <span class="try-edge-icon">🎯</span>
+        <span class="try-edge-text">Storm have conceded tries through every channel for 5 straight rounds — 32 missed tackles in R7 alone. Johnston attacks their left edge as right wing and has not been held scoreless in 2026. Market persistently prices him at implied 67% because books resist going sub-$1.35. That mispricing is 33 points wide.</span>
       </div>
-      <div class="try-pr-row">
+      <div class="try-price-row">
         <div>
-          <div class="try-impl">~$1.50 est (R6 confirmed $1.50 ✅) · verify before placing</div>
-          <div class="try-ebadge">EST EDGE ~+33%</div>
+          <div class="try-implied">~$1.49 est. · implied ~67%</div>
+          <div class="try-edge-badge">EDGE +33%</div>
         </div>
-        <div class="try-price">~$1.50</div>
+        <div class="try-price">~$1.49</div>
       </div>
     </div>
 
+    <!-- GOOD VALUE -->
     <div class="try-card value">
       <div class="try-tier">💪 Good Value</div>
       <div>
-        <div class="try-player">Tolu Koula</div>
-        <div class="try-team">Manly Sea Eagles · #3 Right Centre · vs Cowboys · Thu 7:50pm Townsville</div>
+        <div class="try-player">Mark Nawaqanitawase</div>
+        <div class="try-team">Roosters · #5 Left Wing · vs Dragons · Allianz · Sat 4pm</div>
       </div>
       <div class="try-stats">
-        <div><div class="try-sl">2026 Rate</div><div class="try-sv gold">4/5 — 80%</div></div>
-        <div><div class="try-sl">Edge Matchup</div><div class="try-sv gold">Cowboys LEFT — Taulagi OUT</div></div>
-        <div><div class="try-sl">Market Implied</div><div class="try-sv">~50%</div></div>
-        <div><div class="try-sv accent" style="margin-top:4px">Est Edge ~+30%</div></div>
+        <div><div class="try-stat-label">2026 Rate</div><div class="try-stat-value gold">4/6 (67%)</div></div>
+        <div><div class="try-stat-label">R7 Form</div><div class="try-stat-value gold">2 tries vs Knights</div></div>
+        <div><div class="try-stat-label">Implied</div><div class="try-stat-value">~48%</div></div>
+        <div><div class="try-stat-label">Model Rate</div><div class="try-stat-value accent">67%</div></div>
       </div>
       <div class="try-edge-row">
-        <span style="font-size:12px;flex-shrink:0;margin-top:1px">🎯</span>
-        <span class="try-edge-txt">Koula attacks Cowboys' LEFT edge — Taulagi (OUT, concussion) leaves Laybutt at #5 defending that side. Laybutt has limited experience at left wing at NRL level and has never been tested against an attacker of Koula's quality. Cowboys' left-edge defensive vulnerability is meaningfully higher than usual. 80% anytime rate makes Koula a legitimate best option in most weeks.</span>
+        <span class="try-edge-icon">🎯</span>
+        <span class="try-edge-text">Dragons concede 65%+ of tries through their right edge — Su'A banned, backline threadbare. Nawaqanitawase plays LEFT wing for the Roosters, attacking that exact channel. With Walker/DCE controlling the game and Roosters 95% to win, Nawaq gets multiple opportunities. Two tries vs Knights in R7. Market prices him as a secondary scorer; that is wrong.</span>
       </div>
-      <div class="try-pr-row">
+      <div class="try-price-row">
         <div>
-          <div class="try-impl">~$2.00 est · verify on Sportsbet before placing</div>
-          <div class="try-ebadge">EST EDGE ~+30%</div>
+          <div class="try-implied">~$2.10 est. · implied ~48%</div>
+          <div class="try-edge-badge">EDGE +19%</div>
         </div>
-        <div class="try-price">~$2.00</div>
+        <div class="try-price">~$2.10</div>
       </div>
     </div>
 
+    <!-- JUICY / RISKY — must be $4.00+ -->
     <div class="try-card juicy">
       <div class="try-tier">🎲 Juicy / Risky</div>
       <div>
-        <div class="try-player">Heilum Luki</div>
-        <div class="try-team">North Queensland Cowboys · #11 Left Edge Second Row · vs Sea Eagles · Thu 7:50pm Townsville</div>
+        <div class="try-player">Roger Tuivasa-Sheck</div>
+        <div class="try-team">Warriors · #3 Left Centre · vs Dolphins · Wellington · Sat 6pm</div>
       </div>
       <div class="try-stats">
-        <div><div class="try-sl">2026 Rate</div><div class="try-sv gold">3/6 — 50%</div></div>
-        <div><div class="try-sl">Edge Matchup</div><div class="try-sv gold">Sea Eagles RIGHT — B.Trbojevic / Garrick</div></div>
-        <div><div class="try-sl">Market Implied</div><div class="try-sv">~20–25%</div></div>
-        <div><div class="try-sv accent" style="margin-top:4px">Est Edge ~+25–30%</div></div>
+        <div><div class="try-stat-label">2026 Rate</div><div class="try-stat-value gold">6/7 (86%)</div></div>
+        <div><div class="try-stat-label">Wellington H/A</div><div class="try-stat-value gold">4/5 Warriors home</div></div>
+        <div><div class="try-stat-label">Implied</div><div class="try-stat-value">~61%</div></div>
+        <div><div class="try-stat-label">Model Rate</div><div class="try-stat-value accent">86%</div></div>
       </div>
       <div class="try-edge-row">
-        <span style="font-size:12px;flex-shrink:0;margin-top:1px">🎯</span>
-        <span class="try-edge-txt">Betseeker explicitly flags Luki as "over the odds in every game this season" — the market consistently underprices him. 50% anytime rate in 2026 (3 tries in 6 games). Cowboys left edge second row attacking Sea Eagles' right side in an 83.3% Cowboys win game at Townsville. High-volume scoring environment in a fortress. Different structural angle from recent picks — left edge forward, not a back.</span>
+        <span class="try-edge-icon">🎯</span>
+        <span class="try-edge-text">Second only to Johnston for pure 2026 anytime rate. Dolphins without Nikorima (banned) means their left edge organisation falls to Schneider — a structural downgrade that opens the channel RTS attacks. Wellington sell-out crowd, Warriors 88% to win. The $1.64 market price (implied 61%) is 25 points too cheap.</span>
       </div>
-      <div class="try-pr-row">
+      <div class="try-price-row">
         <div>
-          <div class="try-impl">~$4.50 est · only take at $4.00+ · verify before placing</div>
-          <div class="try-ebadge">EST EDGE ~+28%</div>
+          <div class="try-implied">~$1.64 est. · implied ~61%</div>
+          <div class="try-edge-badge">EDGE +25%</div>
         </div>
-        <div class="try-price">~$4.50</div>
+        <div class="try-price">~$1.64</div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- FIRST TRY SCORER -->
+<!-- ══ SECTION 3: FIRST TRY SCORER ════════════════════════════ -->
 <div class="section">
-  <div class="sec-hdr">
-    <span class="sec-lbl">First Try Scorer</span>
-    <div class="sec-line"></div>
-    <span class="sec-sub">Fair value = anytime% × early-score factor · Softest market in NRL betting · All prices estimated</span>
+  <div class="section-header">
+    <span class="section-label">First Try Scorer</span>
+    <div class="section-line"></div>
+    <span class="section-sublabel">Fair value = anytime% &times; early-score factor · Softest market in NRL betting</span>
   </div>
-  <div class="fts-grid">
+  <div class="first-try-grid">
 
     <div class="fts-card">
       <div class="fts-top">
         <div>
-          <div class="fts-rnk">PICK 1</div>
+          <div class="fts-rank-label">PICK 1</div>
           <div class="fts-player">Alex Johnston</div>
-          <div class="fts-match">Rabbitohs v Dragons · Accor Stadium · Sat 5:30pm · Rabbitohs 95.4% to win</div>
+          <div class="fts-matchup">Storm v Rabbitohs · AAMI · Sat 8pm · Rabbitohs 84%</div>
         </div>
-        <div class="fts-pc">
-          <div class="fts-price">~$6</div>
-          <div class="fts-ret">$10 → ~$60</div>
+        <div class="fts-price-col">
+          <div class="fts-price">~$7.50</div>
+          <div class="fts-returns">$10 → ~$75</div>
         </div>
       </div>
-      <div class="fts-reason">The all-time NRL leading try scorer is also the <strong>all-time leading scorer at Accor Stadium</strong>. 100% anytime rate in 2026. FTS fair value calculated at ~20% (anytime% × position factor), making ~$5.00 the fair FTS price. At $6+ this is genuine value. Dragons' right edge will be targeted from the first set.</div>
+      <div class="fts-reason"><strong>Johnston scores first in ~22% of Rabbitohs games</strong> — he is their primary strike weapon and the line of running off Reynolds/Dufty often produces an early try. Against a Storm side that has conceded in the first 20 minutes in 4 of 5 losses, the value at $7-8 is real.</div>
       <div class="fts-stats">
-        <div><div class="fts-sl">Anytime%</div><div class="fts-sv gold">100%</div></div>
-        <div><div class="fts-sl">FTS Fair Value</div><div class="fts-sv purple">~$5.00</div></div>
-        <div><div class="fts-sl">Implied</div><div class="fts-sv">~17%</div></div>
+        <div><div class="fts-stat-label">Anytime%</div><div class="fts-stat-value gold">100%</div></div>
+        <div><div class="fts-stat-label">Fair Value</div><div class="fts-stat-value purple">~20%</div></div>
+        <div><div class="fts-stat-label">Implied</div><div class="fts-stat-value">~12%</div></div>
       </div>
     </div>
 
     <div class="fts-card">
       <div class="fts-top">
         <div>
-          <div class="fts-rnk">PICK 2</div>
-          <div class="fts-player">Latrell Mitchell</div>
-          <div class="fts-match">Rabbitohs v Dragons · Accor Stadium · Sat 5:30pm · 80% anytime 2026</div>
+          <div class="fts-rank-label">PICK 2</div>
+          <div class="fts-player">Roger Tuivasa-Sheck</div>
+          <div class="fts-matchup">Warriors v Dolphins · Hnry Stadium · Sat 6pm · Warriors 88%</div>
         </div>
-        <div class="fts-pc">
-          <div class="fts-price">~$8</div>
-          <div class="fts-ret">$10 → ~$80</div>
+        <div class="fts-price-col">
+          <div class="fts-price">~$7.00</div>
+          <div class="fts-returns">$10 → ~$70</div>
         </div>
       </div>
-      <div class="fts-reason"><strong>12 tries in 10 games at Accor Stadium</strong> for his career. Left centre in a Rabbitohs side that will score freely vs the wooden spooners. 80% anytime rate this season (4/5). At $8 (implied ~12.5%) versus FTS fair value ~16%, there's structural edge. He attacks through Dragons' right edge — same side as Johnston.</div>
+      <div class="fts-reason"><strong>Warriors attack from the very first set at Wellington</strong> — the Cake Tin crowd lifts intensity immediately and Boyd/Harris-Tavita push the pace early. RTS at left centre cuts off the back of forward momentum and the Dolphins without Nikorima will struggle to organise their line speed in the opening 10 minutes. With Warriors 88% to win and RTS scoring in 6 of 7 games, the first-try market at ~$7 (implied ~14%) is undercooked on fair value of ~22%.</div>
       <div class="fts-stats">
-        <div><div class="fts-sl">Anytime%</div><div class="fts-sv gold">80%</div></div>
-        <div><div class="fts-sl">FTS Fair Value</div><div class="fts-sv purple">~$6.25</div></div>
-        <div><div class="fts-sl">Implied</div><div class="fts-sv">~12.5%</div></div>
+        <div><div class="fts-stat-label">Anytime%</div><div class="fts-stat-value gold">86%</div></div>
+        <div><div class="fts-stat-label">Fair Value</div><div class="fts-stat-value purple">~22%</div></div>
+        <div><div class="fts-stat-label">Implied</div><div class="fts-stat-value">~14%</div></div>
       </div>
     </div>
 
     <div class="fts-card">
       <div class="fts-top">
         <div>
-          <div class="fts-rnk">PICK 3</div>
-          <div class="fts-player">Tolu Koula</div>
-          <div class="fts-match">Sea Eagles v Cowboys · QCBS Townsville · Thu 7:50pm · 80% anytime 2026</div>
+          <div class="fts-rank-label">PICK 3</div>
+          <div class="fts-player">Lehi Hopoate</div>
+          <div class="fts-matchup">Sea Eagles v Eels · Brookvale · Sun 4:05pm · Sea Eagles 80%</div>
         </div>
-        <div class="fts-pc">
-          <div class="fts-price">~$9</div>
-          <div class="fts-ret">$10 → ~$90</div>
+        <div class="fts-price-col">
+          <div class="fts-price">~$9.00</div>
+          <div class="fts-returns">$10 → ~$90</div>
         </div>
       </div>
-      <div class="fts-reason">80% anytime rate with a Cowboys left edge missing <strong>Taulagi (OUT, concussion)</strong> — the defensive quality at that edge drops materially. Sea Eagles will attack Laybutt's side relentlessly from kick-off. Koula is the primary beneficiary. FTS fair value ~$6.25. At $9+, excellent value.</div>
+      <div class="fts-reason"><strong>Hopoate has two tries in R7 and is now the primary scorer for Sea Eagles</strong> with Tom Trbojevic out for 4–6 weeks. Fogarty's kicking game targets the left side and Brookvale is a ground where Sea Eagles set up quickly — they've scored in the opening 15 minutes in four of their last six home games. The Eels right edge is their documented weak channel and Hopoate attacks it directly. At 67% anytime, $9 (implied ~11%) is well below fair value of ~18%.</div>
       <div class="fts-stats">
-        <div><div class="fts-sl">Anytime%</div><div class="fts-sv gold">80%</div></div>
-        <div><div class="fts-sl">FTS Fair Value</div><div class="fts-sv purple">~$6.25</div></div>
-        <div><div class="fts-sl">Implied</div><div class="fts-sv">~11%</div></div>
+        <div><div class="fts-stat-label">Anytime%</div><div class="fts-stat-value gold">67%</div></div>
+        <div><div class="fts-stat-label">Fair Value</div><div class="fts-stat-value purple">~18%</div></div>
+        <div><div class="fts-stat-label">Implied</div><div class="fts-stat-value">~11%</div></div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- GROUP CHAT INTEL -->
+<!-- ══ SECTION 4: GROUP CHAT INTEL ════════════════════════════ -->
+<!--
+  NOT formal picks. Sharp observations that might spark a bet.
+  3 minimum, 5 maximum. Remove unused intel-item divs.
+  Bold the key number or pattern with <strong>.
+-->
 <div class="section">
-  <div class="sec-hdr">
-    <span class="sec-lbl">Group Chat Intel</span>
-    <div class="sec-line"></div>
-    <span class="sec-sub">Patterns worth knowing · Not model picks · Do your own homework</span>
+  <div class="section-header">
+    <span class="section-label">Group Chat Intel</span>
+    <div class="section-line"></div>
+    <span class="section-sublabel">Patterns worth knowing · Not model picks · Do your own homework</span>
   </div>
   <div class="intel-block">
-    <div class="intel-disc">Not model-certified · Entertainment only · Verify prices before acting</div>
+    <div class="intel-disclaimer">Not model-certified · Entertainment only · Verify prices before acting</div>
     <div class="intel-list">
 
       <div class="intel-item">
-        <span class="intel-bul">🤯</span>
-        <span class="intel-txt">Bulldogs <strong>$1.23 at CommBank</strong> is one of the biggest market overreactions of the season. Model says it's 54.7% Bulldogs — barely above coin-flip. Eels are home, have Moses, Russell returns, and Crichton is in extended squad only (not starting). Market is still riding the Panthers high. If you're going Bulldogs, at least make sure Crichton starts first.</span>
+        <span class="intel-bullet">💡</span>
+        <span class="intel-text"><strong>Storm have 20 straight home wins vs Souths</strong> — but Hard Block stays. Back Johnston and Mitchell, not the Storm. Let the record die.</span>
       </div>
 
       <div class="intel-item">
-        <span class="intel-bul">🍌</span>
-        <span class="intel-txt">Titans <strong>haven't lost in Auckland since 2013</strong>. Won 6 of last 8 H2H overall. Warriors are $1.30 but this is the classic banana-peel spot — big win last week over Storm, now host a Titans side with zero fear of Go Media. Venue H2H already baked into our model at +20 Elo to Titans. Still backing Warriors but eyes wide open.</span>
+        <span class="intel-bullet">💡</span>
+        <span class="intel-text"><strong>Cowboys 76% to win at home</strong> but excluded from multis — 3 upset conditions including coming off a 38-6 belting. This is exactly what the gate is designed to catch.</span>
       </div>
 
       <div class="intel-item">
-        <span class="intel-bul">🌩️</span>
-        <span class="intel-txt">Storm vs Raiders at GIO is <strong>closer to 50/50 than $1.75 suggests</strong>. Storm on a 5-day turnaround (played Sat Apr 12, next up Fri Apr 17) — elite squad gets −20 Elo penalty. Raiders won in Perth last week, playing at home. The model has this as a genuine coin-flip after adjustments. <strong>Raiders $2.10 is live money</strong> if you want to fade Storm's four-game losing streak continuing.</span>
+        <span class="intel-bullet">💡</span>
+        <span class="intel-text"><strong>Broncos 87% model confidence</strong> at Suncorp with Carrigan back — but Haas OUT, Crichton RETURNS for Dogs (emotional lift). 3 upset conditions. Hard exclusion.</span>
       </div>
 
+      <!-- Remove below if fewer than 4 insights this round -->
       <div class="intel-item">
-        <span class="intel-bul">💎</span>
-        <span class="intel-txt">Heilum Luki (Cowboys #11) has been <strong>"over the odds in every game this season"</strong> per Betseeker — 50% anytime rate (3/6 games) and the market keeps underpricing him. Playing in an 83% Cowboys home win at Townsville. Left edge second row, fresh angle from the backs we've been targeting. If he's $4+, that's a clean structural edge with no overlap from last round's picks.</span>
+        <span class="intel-bullet">💡</span>
+        <span class="intel-text"><strong>Dragons get new coach bounce (+15 Elo)</strong> but Roosters are still 95% to win. Nawaqanitawase at $2.10 is the correct way to profit from that game.</span>
       </div>
 
+      <!-- Remove below if fewer than 5 insights this round -->
       <div class="intel-item">
-        <span class="intel-bul">🏜️</span>
-        <span class="intel-txt">Panthers <strong>$1.20 in Darwin is soft</strong> — model has them at 74.3%, not 83%. McLean suspended, Liam Martin out, both travel equally to TIO Stadium. Market is pricing Darwin like Penrith. <strong>HTF anytime $3.00</strong> (confirmed price via The Beaten Favourite) has an estimated +46% edge based on his 80% rate — biggest tryscorer edge of the round if you can stomach the context. Note: two of his four scoring games were garbage-time efforts.</span>
+        <span class="intel-bullet">💡</span>
+        <span class="intel-text"><strong>Panthers only 66% at McDonald Jones</strong> — Darwin fatigue (GP extra time in heat) + Knights home + Marzhew concussion replaced by Schiller. Not a multi leg.</span>
       </div>
 
     </div>
   </div>
 </div>
 
-<!-- ALL MARKETS TABLE -->
-<div class="section">
-  <div class="sec-hdr">
-    <span class="sec-lbl">All Markets Evaluated</span>
-    <div class="sec-line"></div>
-    <span class="sec-sub">Every game accounted for · Swipe to scroll →</span>
-  </div>
-  <div class="tbl-wrap">
-    <table class="mkts">
-      <thead>
-        <tr><th>Market</th><th>Status</th><th>Reason / Key Number</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="mkt">Cowboys v Sea Eagles — H2H</td><td><span class="sel">✅ BSB + L1</span></td><td>Model 83.3% vs mkt 63.3% → +20.0% edge</td></tr>
-        <tr><td class="mkt">Cowboys — Line (−4.5 est)</td><td><span class="pss">❌ Pass</span></td><td>Cover prob ~88% but H2H +20% edge is superior pick</td></tr>
-        <tr><td class="mkt">Cowboys — O/U (53.5)</td><td><span class="pss">❌ Pass</span></td><td>Model total not directly predictable; no 6pt+ divergence confirmed</td></tr>
-        <tr><td class="mkt">Johnston anytime (Rabbitohs)</td><td><span class="sel">✅ BEST Try</span></td><td>100% anytime, Dragons right edge C-rated, est. ~$1.50 → ~+33% edge. Confirm price.</td></tr>
-        <tr><td class="mkt">Johnston FTS</td><td><span class="sel">✅ FTS Pick 1</span></td><td>~$6, fair value ~$5.00, Accor all-time leading scorer</td></tr>
-        <tr><td class="mkt">Mitchell FTS (Rabbitohs)</td><td><span class="sel">✅ FTS Pick 2</span></td><td>~$8, fair value ~$6.25, 12 tries in 10 at Accor</td></tr>
-        <tr><td class="mkt">Raiders v Storm — H2H (Raiders)</td><td><span class="pss">❌ Pass</span></td><td>Model 49.1%, mkt 47.6% — edge only +1.5%</td></tr>
-        <tr><td class="mkt">Raiders v Storm — H2H (Storm)</td><td><span class="pss">❌ Pass</span></td><td>Model 50.9%, mkt 57.1% — market overprices Storm</td></tr>
-        <tr><td class="mkt">Raiders v Storm — Line (Storm −2.5)</td><td><span class="pss">❌ Pass</span></td><td>~50/50 game; cover prob ~50% vs 53.5% market implied</td></tr>
-        <tr><td class="mkt">Dolphins v Panthers (Darwin) — H2H (Panthers)</td><td><span class="pss">❌ Pass</span></td><td>Model 74.3%, mkt 83.3% — market overprices Panthers, negative edge</td></tr>
-        <tr><td class="mkt">Dolphins v Panthers — H2H (Dolphins)</td><td><span class="pss">❌ Pass</span></td><td>Model 25.7%, mkt 21.7% — edge +4.0%, below +8% threshold</td></tr>
-        <tr><td class="mkt">Panthers — Line (−14.5 est)</td><td><span class="pss">❌ Pass</span></td><td>Cover prob ~56% vs mkt ~53.5% — edge only +2.5%, below +10%</td></tr>
-        <tr><td class="mkt">HTF anytime vs Panthers</td><td><span class="pss">❌ Pass</span></td><td>$3.00 confirmed; 80% rate → est +46% but 2 of 4 scored games garbage-time; Dolphins likely losing heavily. Context risk overrides edge calc.</td></tr>
-        <tr><td class="mkt">Warriors v Titans — H2H (Warriors)</td><td><span class="pss">❌ Pass</span></td><td>Model 87.5%, mkt 76.9%, edge +10.6% — not selected; line bet has higher edge from same game</td></tr>
-        <tr><td class="mkt">Warriors −10.5 line</td><td><span class="sel">✅ Multi A L3</span></td><td>Cover prob 77.2% vs mkt 52.4% → edge +24.8% · ~$1.91</td></tr>
-        <tr><td class="mkt">DWZ anytime vs Titans</td><td><span class="pss">❌ Pass</span></td><td>$1.50 confirmed; 67% rate → implied 66.7% — edge only +0.3%</td></tr>
-        <tr><td class="mkt">Rabbitohs v Dragons — H2H</td><td><span class="sel">✅ Multi A L2</span></td><td>Model 95.4%, mkt 80.6%, edge +14.8%</td></tr>
-        <tr><td class="mkt">Tigers v Broncos — H2H</td><td><span class="blk">⛔ Blocked</span></td><td>2 upset conditions (Campbelltown H2H + injury cascade) — multi exclusion gate. Broncos standalone 45.3%, fails 58% floor.</td></tr>
-        <tr><td class="mkt">Roosters v Knights — H2H</td><td><span class="pss">❌ Pass</span></td><td>Model 88.2%, mkt 78.7%, edge +9.5% — qualifies but Multi A full. Valid alternative single at $1.27.</td></tr>
-        <tr><td class="mkt">Roosters — Line (−7.5)</td><td><span class="pss">❌ Pass</span></td><td>H2H +9.5% evaluated first per priority order; H2H assessed superior in this case</td></tr>
-        <tr><td class="mkt">Eels v Bulldogs — H2H (Bulldogs)</td><td><span class="pss">❌ Pass</span></td><td>Model 54.7%, mkt 81.3% — Bulldogs massively overpriced; no edge backing them</td></tr>
-        <tr><td class="mkt">Eels v Bulldogs — H2H (Eels)</td><td><span class="pss">❌ Pass</span></td><td>Model 45.3%, mkt 25%, edge +20.3% — FAILS 58% confidence floor. Cannot back Eels below 58% model even with +20.3% edge.</td></tr>
-        <tr><td class="mkt">Koula anytime vs Cowboys</td><td><span class="sel">✅ VALUE Try</span></td><td>80% anytime, Cowboys left edge weakened (Taulagi OUT), est. ~$2.00 → ~+30%</td></tr>
-        <tr><td class="mkt">Luki anytime vs Sea Eagles</td><td><span class="sel">✅ JUICY Try</span></td><td>50% anytime, "over the odds every game" (Betseeker), Sea Eagles right edge, est. ~$4.50 → ~+28%</td></tr>
-        <tr><td class="mkt">Koula FTS vs Cowboys</td><td><span class="sel">✅ FTS Pick 3</span></td><td>~$9, fair value ~$6.25, Taulagi out weakens Cowboys left-edge defence</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- FOOTER -->
+<!-- ══ FOOTER ══════════════════════════════════════════════════ -->
 <div class="footer">
-  <div class="f-left">NRL 2026 · Model v6.2 · Monte Carlo 1,000 runs · Elo-based · 16–19 April 2026</div>
-  <div class="f-right">Season <span>33/48</span> · 68.75% · Gamble responsibly</div>
+  <div class="footer-left">NRL 2026 · Model v6.2 · Monte Carlo 1,000 runs · Elo-based · 23–26 April 2026</div>
+  <div class="footer-right">Season <span>37/56</span> · 66.1% · Gamble responsibly</div>
 </div>
 
 </div>
-<p class="disc">Prices marked ~ are indicative estimates. Verify all prices on Sportsbet before placing. 18+. Gambling problem? 1800 858 858 · gamblinghelponline.org.au</p>
+<p class="disclaimer">Prices marked ~ are indicative estimates. Verify on Sportsbet before placing. 18+. Gambling problem? 1800 858 858 · gamblinghelponline.org.au</p>
 </body>
 </html>
